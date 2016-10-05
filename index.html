@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="uk"  ng-app="OVApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Third-party stylesheets -->
+  <link href="https://fonts.googleapis.com/css?family=Andika" rel="stylesheet">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+  <link rel="stylesheet" href="bower_components/bootstrap-social/bootstrap-social.css" />
+  <link rel="stylesheet" href="bower_components/reset-css/reset.css" />
+
+  <!-- Third-party scripts -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/jquery-mousewheel/jquery.mousewheel.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/lodash/lodash.js"></script>
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="assets/css/main.css"> 
+
+  <!-- Main scripts -->
+  <script src="app.js"></script> 
+  <script src="scripts/controllers/ScrollController.js"></script>
+  <script src="scripts/controllers/ScrollCtrl.js"></script>
+
+  <title>Іграшки від Олени Вербець</title>   
+  
+</head>
+<body ng-controller="ScrollController">
+  <div class="container" id="main-container">
+    <header>
+      <div class="row" id="top-section">
+        <img id="head-image" src="assets/img/header2.png" alt="header">
+        <nav id="top-menu">
+          <a href="" ng-click="scroll(null, 2)">Про дизайнера</a>
+          <a href="" ng-click="scroll(null, 3)">Портфоліо</a>
+          <a href="" ng-click="scroll(null, 4)">Придбати</a>
+          <a href="" ng-click="scroll(null, 5)">Контакти</a>
+        </nav>
+      </div>
+      <div id="photos">
+        <div class="col-xs-4">
+          <img id="first-img" class="top-imgs" src="assets/img/photo4.jpg" alt="photo">
+        </div>
+        <div class="col-xs-4">
+          <img id="second-img" class="top-imgs" src="assets/img/photo5.jpg" alt="photo">
+        </div>
+        <div class="col-xs-4">
+          <img id="third-img" class="top-imgs" src="assets/img/photo6.jpg" alt="photo">
+        </div>
+      </div>
+    </header>
+    <main>
+      <nav id="scroll-btns" class="ng-hide visible-md-block visible-lg-block" ng-show="scrollMenuIsVisible">
+        <a href="" ng-click="scroll(null, 1)"><img class="scroll-imgs active" src="assets/img/btn1.png" alt="button"></a>
+        <a href="" ng-click="scroll(null, 2)"><img class="scroll-imgs" src="assets/img/btn2.png" alt="button"></a>
+        <a href="" ng-click="scroll(null, 3)"><img class="scroll-imgs" src="assets/img/btn3.png" alt="button"></a>
+        <a href="" ng-click="scroll(null, 4)"><img class="scroll-imgs" src="assets/img/btn4.png" alt="button"></a>
+        <a href="" ng-click="scroll(null, 5)"><img class="scroll-imgs" src="assets/img/btn1.png" alt="button"></a>
+      </nav>
+      <div class="row section" id="about-section">
+        <div class="section-header">
+          <h2>Про дизайнера</h2>
+        </div>
+        <div id="about-paper">
+          <p>
+            <img src="assets/img/photo7.jpg" alt="">
+            Олена Вербець родом  з чарівного міста Рівне, що на західній Україні,
+             де проявились її художні здібності з дитинства. Свою кар'єру Олена
+             почала з вивчення живопису та мистецтва кераміки у Рівненському  державному
+             гуманітарному університеті, після випуску почала викладати мистецтво діткам
+             дошкільного віку. Вона проявляла усю свою креативність, творчість і професійні
+             здібності не лише у роботі, а й у буденному житті. Так, з народженням донечки,
+             виникла перша іграшка.
+             Творча освіта і робота з дітьми підштовхнули Олену Вербець до професії дизайнера
+             іграшок. На неповторні образи її надихають щирі дитячі очі, посмішки та віра
+             у чарівний світ казки. Кожна іграшка є унікальним витвором ручної роботи
+             з власною історією, тому навряд чи знайдеться дві однакові роботи.
+             Особливістю Олениних ляльок є не лише її неповторний дизайн, а й використання
+             натуральних матеріалів, безпечних навіть для найменших шанувальників
+             творчості мисткині. Поєднання професійних навиків живопису та різноманітних
+             технік декору з Олениною творчою душею перетворюють реальність у
+             неймовірний світ фантазії.
+             Невід'ємною рисою дизайнера є її віра у можливість наповнення кожного дня
+             маленьким дивом. Вона вміє надихатись і надихати інших. Саме тому, окрім
+             дизайнерської роботи, Олена дає уроки творчості, різноманітні майстер-класи
+             з живопису, рукоділля та, звісно, створення іграшок дітям і дорослим.
+             Грайливі тваринки та елегантні лялечки до вподоби людям будь якого віку.
+             Кожна з Олениних  іграшок є більше ніж просто іграшка, це справжній витвір
+             мистецтва. Її особливий стиль вже впізнають у багатьох країнах світу, багато
+             робіт знайшли свого власника у Польщі, Італії, Іспанії, США, Росії та інших
+             країнах.</p>
+        </div>
+      </div>
+      <div class="row section" id="portfolio-section">
+        <div class="section-header">
+          <h2>Портфоліо</h2>
+        </div>
+        <div id="book">
+          <div id="1-1" class="col-xs-6 page left-page first-page closed-page">
+            <div class="page-content">
+              <img src="assets/img/photo1.jpg" alt="">
+              <div class="page-text">
+                <p>
+                  <h4>Новорічні мотиви</h4>
+                  До нового року лишилось не багато! робота кипить, ялинкові іграшки,
+                  півники і дідусі морози приймаю на замовлення вже!
+                </p>
+              </div>
+            </div>
+            <div class="arrow arrow-left">
+              <i class="fa fa-arrow-left" ng-click="clickOnLeftArrow()" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div id="1-2" class="col-xs-6 page right-page first-page turned-right-page closed-page">
+            <div class="page-content">
+              <div class="page-text">
+                <p>
+                  <h4>Казкові герої</h4>
+                  My lil' ginger friend - Pedro the pumpkin😍 The story begins... 🍁
+                </p>
+              </div>
+              <img src="assets/img/photo2.jpg" alt="">
+            </div>
+            <div class="arrow arrow-right">
+              <i class="fa fa-arrow-right" ng-click="clickOnRightArrow()" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div id="2-1" class="col-xs-6 page left-page second-page opened-page">
+            <div class="page-content">
+              <img src="assets/img/photo3.jpg" alt="">
+              <div class="page-text">
+                <p>
+                  <h4>Новорічні мотиви</h4>
+                  До нового року лишилось не багато! робота кипить, ялинкові іграшки,
+                  півники і дідусі морози приймаю на замовлення вже!
+                </p>
+              </div>
+            </div>
+            <div class="arrow arrow-left">
+              <i class="fa fa-arrow-left" ng-click="clickOnLeftArrow()" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div id="2-2" class="col-xs-6 page right-page second-page opened-page">
+            <div class="page-content">
+              <div class="page-text">
+                <p>
+                  <h4>Новорічні мотиви</h4>
+                  До нового року лишилось не багато! робота кипить, ялинкові іграшки,
+                  півники і дідусі морози приймаю на замовлення вже!
+                </p>
+              </div>
+              <img src="assets/img/photo4.jpg" alt="">
+            </div>
+            <div class="arrow arrow-right">
+              <i class="fa fa-arrow-right" ng-click="clickOnRightArrow()" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div id="3-1" class="col-xs-6 page left-page third-page turned-left-page closed-page">
+            <div class="page-content">
+              <img src="assets/img/photo5.jpg" alt="">
+              <div class="page-text">
+                <p>
+                  <h4>Новорічні мотиви</h4>
+                  До нового року лишилось не багато! робота кипить, ялинкові іграшки,
+                  півники і дідусі морози приймаю на замовлення вже!
+                </p>
+              </div>
+            </div>
+            <div class="arrow arrow-left">
+              <i class="fa fa-arrow-left" ng-click="clickOnLeftArrow()" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div id="3-2" class="col-xs-6 page right-page third-page closed-page">
+            <div class="page-content">
+              <div class="page-text">
+                <p>
+                  <h4>Новорічні мотиви</h4>
+                  До нового року лишилось не багато! робота кипить, ялинкові іграшки,
+                  півники і дідусі морози приймаю на замовлення вже!
+                </p>
+              </div>
+              <img src="assets/img/photo6.jpg" alt="">
+            </div>
+            <div class="arrow arrow-right">
+              <i class="fa fa-arrow-right" ng-click="clickOnRightArrow()" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row section" id="how-to-buy-section">
+        <div class="section-header">
+          <h2>Як придбати?</h2>
+        </div>
+        <div class="col-lg-12" id="paper-with-pen">
+          <div id="paper">
+            <div id="order" class="col-lg-4">
+              <h3>Замовлення</h3>
+              <p>Усі іграшки виготовляються на замовлення, тому Ваша іграшка
+                 буде створена лише в одному екземплярі і тільки для Вас.
+                 Щоб зробити замовлення, напишіть нам у розділі Контакти,
+                 вказавши усі побажання щодо розміру, матеріалів, зовнішності
+                 та образу іграшки, додаткових аксесуарів (наприклад, квіти,
+                 валізи, велосипеди, меблі..).
+                 Ви можете звертатись до дизайнера з будь-якими ідеями та образами
+                 іграшок, але важливо наголосити, що кожна робота сповнена
+                 неповторного стилю автора, адже Олена вкладає частинку власної
+                  душі у кожну ляльку.</p>
+            </div>
+            <div class="col-lg-8">
+              <div id="delivery" class="col-lg-12">
+                <h3>Доставка</h3>
+                <p>Доставка замовлення не включена у вартість іграшки і сплачується
+                   згідно тарифів кур'єрської служби. По території  України
+                   та закордону кур'єрські послуги здійснюють: intime.ua
+                   ponyexpress-ua.com
+                   novaposhta.ua
+                   ukrcargo.com
+                   dhl.com, ups.com
+                   У деяких випадках, залежно від Вашого місця розташування,
+                   ми можемо запропонувати приватну службу доставки.</p>          
+              </div>
+              <div id="price" class="col-lg-12">
+                <h3>Вартість</h3>
+                <p>Ціна іграшки залежить від розміру, складністю створення
+                   та кількість додаткових аксесуарів. Детальний опис цін у прайсі:</p>
+                   <table class="col-lg-12">
+                     <tr>
+                       <th class="col-lg-8">Опис іграшки</th>
+                       <th class="col-lg-8">Ціна</th>
+                     </tr>
+                     <tr>
+                       <td>Іграшки до 15 см.</td>
+                       <td>150 - 250</td>
+                     </tr>
+                     <tr>
+                       <td>Іграшки до 20 см.</td>
+                       <td>300 - 350</td>
+                     </tr>
+                     <tr>
+                       <td>Іграшки до 35 см.</td>
+                       <td>450 - 700</td>
+                     </tr>
+                     <tr>
+                       <td>Іграшки до 50 см.</td>
+                       <td>800 - 1000</td>
+                     </tr>
+                     <tr>
+                       <td>Іграшки більше 50 см.</td>
+                       <td>1200 +</td>
+                     </tr>
+                   </table>       
+              </div>
+            </div>
+          </div>
+          <img id="pen" src="assets/img/disegno 7.png" alt="book">
+        </div>
+      </div>
+      <div class="row section" id="contacts-section">
+        <div class="section-header">
+          <h2>Контакти</h2>
+        </div>
+        <div class="col-xs-3 contacts">
+          <div class="col-lg-12 phones">
+            <img id="phone-list" src="assets/img/disegno 14.png" alt="phones">
+          </div>
+          <div class="col-xs-8 social">
+            <a href="">
+              <img id="instagram" src="assets/img/instagram.png" alt="instagram">
+            </a>
+          </div>
+          <div class="col-xs-8 social">
+            <a href="https://www.facebook.com/verbets">
+              <img id="facebook" src="assets/img/facebook.png" alt="facebook">
+            </a>
+          </div>
+        </div>
+        <div class="col-xs-9 contacts">
+          <img id="letter" class="pull-right" src="assets/img/letter.png" alt="contact form">
+        </div>
+      </div>
+    </main>
+    <footer>
+      <img src="assets/img/bottom-strip.png" alt="footer">
+    </footer>
+  </div>
+</body>
+</html>

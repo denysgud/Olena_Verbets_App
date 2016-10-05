@@ -1,0 +1,435 @@
+/* *** Fonts *** */
+@font-face {
+  font-family: peace-sans;
+  src: url('../fonts/peace_sans.otf');
+}
+@font-face {
+  font-family: neocyr;
+  src: url(../fonts/neocyr.ttf);
+}
+/* *** variables *** */
+@number-of-sections: 5;
+@document-height: @number-of-sections * 100%;
+
+/* *** default styles *** */
+body {
+  //-ms-overflow-style: none;
+}
+h2 {
+  font-size: 70px;
+  font-family: peace-sans;
+  text-shadow: 2px 0 5px #333;
+  color: #000;
+}
+body,
+html {
+  height: 100%;
+}
+body {
+  overflow: hidden;
+}
+#main-container {
+  height: @document-height;
+}
+main {
+  height: 390% / 500 * 100;
+}
+header {
+  height: 100% / @number-of-sections;
+}
+#about-section,
+#portfolio-section,
+#how-to-buy-section {
+  height: 100% / 390 * 100;
+}
+#contacts-section {
+  height: 90% / 390 * 100;
+}
+footer {
+  height: 10% / @document-height * 100;
+}
+body {
+  background-image: url('../img/background.gif');
+  background-size: 100%;
+  background-repeat: repeat-y;
+  text-align: center;
+}
+
+.section {
+  @media screen {
+    @media (min-width: 992px) {
+      width: 97%;
+    }
+    @media (min-width: 1120px) {
+      width: 100%;
+    }
+    @media (min-width: 1200px) {
+      width: 97%;
+    }
+    @media (min-width: 1300px) {
+      width: 100%;
+    }
+  }
+}
+
+header{
+  text-align: center;
+  #top-section {
+    position: relative;
+    margin-top: 2%;
+    img {
+      width: 100%;
+      max-width: 1170px;
+      max-height: 355px;
+    }
+    a {
+      position: absolute;
+      bottom: 6%;
+      width: 23%;
+      height: 10%;
+      padding-top: 10px;
+      font-family: 'peace-sans';
+      font-size: 150%;
+      color: #000;
+      text-decoration: none;
+      &:nth-child(1) {
+        left: 1.5%;
+      }
+      &:nth-child(2) {
+        left: 24.7%;
+      }
+      &:nth-child(3) {
+        left: 47.9%;
+      }
+      &:nth-child(4) {
+        left: 71.2%;
+      }
+    }
+    /*#head-image {
+      height: 60%;
+      max-width: 100%;
+      max-height: 320px;
+    }
+    #strip-image {
+      position: absolute;
+      bottom: 0;
+      height: 40%;
+      margin-top: -5%;
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }*/
+  }
+  #photos {
+    position: relative;
+    height: 1px;
+    min-height: 50%;
+    div {
+      height: 100%;
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 0 10%;
+        max-height: 80%;
+        max-width: 80%;
+        border: 5px solid #000;
+      }
+      &:nth-child(1) img {
+        transform: rotate(-5deg);
+      }
+      &:nth-child(2) img {
+        transform: rotate(-2deg);
+      }
+      &:nth-child(3) img {
+        transform: rotate(3deg);
+      }
+    }
+  }
+}
+#scroll-btns {
+  position: fixed;
+  top: 40%;
+  right: 20px;
+  width: 40px;
+  transition: opacity 1s linear;
+  a {
+    display: block;
+    img {
+      width: 20px;
+      height: 20px;
+      transition: all 1.5s linear;
+      &.active {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+  &.ng-hide { 
+    opacity: 0;
+  }
+}
+.section-header {
+  height: 15%;
+  padding-top: 50px;
+}
+#about-section {
+  #about-paper {
+    height: 80%;
+    width: 100%;
+    background-image: url('../img/disegno 6.png');
+    background-size: 100% 100%;
+    padding: 5% 10% 5% 5%;
+    font-family: neocyr;
+    font-size: 23px;
+    p {
+      max-height: 100%;
+      max-width: 100%;
+      overflow: hidden;
+      img {
+        max-height: 30%;
+        max-width: 30%;
+        margin: 5% 5%;
+        float: left;
+      }
+    }
+  }
+}
+#portfolio-section {
+  #book {
+    position: relative;
+    width: 100%;
+    height: 80%;
+    margin-top: 20px;
+    background: url(../img/book.png) left top/100% 100% no-repeat;
+    perspective: 3000px;
+    font-family: neocyr;
+    .page {
+      position: absolute;
+      width: 48.2%;
+      height: 100%;
+      padding-top: 50px;
+      opacity: 1; 
+      transition: transform 1s linear;
+      padding: 60px 40px 40px 70px;
+      .page-content {
+        width: 100%;
+        height: 100%;
+        img {
+          border: 2px solid #000;
+          max-width: 80%;
+          max-height: 60%;
+          margin-top: 15px;
+        }
+        .page-text {
+          max-height: 40%;
+          overflow: hidden;
+          h4 {
+            font-size: 23px;
+            margin: 15px 0;
+          }
+        }
+      }
+    }
+    .first-page {
+      z-index: 10;
+    }
+    .second-page {
+      background-color: yellow;
+      z-index: 9;
+    }
+    .third-page {
+      background-color: blueviolet;
+      z-index: 8;
+    }
+    .left-page {
+      top: 0;
+      background: url(../img/book-700.png) left top/100% 100% no-repeat;
+      left: 0;
+      transform: rotateY(0deg);
+      transform-origin: 100% 0;
+    }
+    .right-page {
+      top: 0;
+      background: url(../img/book-right-700.png) left top/100% 100% no-repeat;
+      left: 48.1%;
+      transform: rotateY(0deg);
+      transform-origin: 0 0;
+    }
+    .opened-page {
+      z-index: 100;
+    }
+    .turned-left-page {
+      transform: rotateY(90deg);
+    }
+    .turned-right-page {
+      transform: rotateY(-89deg);
+    }
+    .closed-page {
+      opacity: 0;
+    }
+    .arrow {
+      position: absolute;
+      bottom: 5%;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .arrow-left {
+      left: 5%;
+    }
+    .arrow-right {
+      right: 5%;
+    }
+  }
+  /*#gallery {
+    position: relative;
+    overflow: visible;
+    height: 80%;
+    .photo {
+      margin-top: 10px;
+      height: 40%;
+      img {
+        max-width: 100%;
+        max-height: 100%;
+        border: 2px solid #000;
+      }
+    }
+    .photo:nth-child(1) {
+      transform: rotate(-2deg);
+    }
+    .photo:nth-child(2) {
+      transform: rotate(-5deg);
+    }
+    .photo:nth-child(3) {
+      transform: rotate(9deg);
+    }
+    .photo:nth-child(4) {
+      padding-top: 30px;
+      transform: rotate(-4deg);
+    }
+    .photo:nth-child(5) {
+      padding-top: 30px;
+      transform: rotate(8deg);
+      z-index: 3;
+    }
+    .photo:nth-child(6) {
+      padding-top: 30px;
+      transform: rotate(3deg);
+    }
+  }*/
+}
+#how-to-buy-section {
+  #paper-with-pen {
+    height: 80%;
+  }
+  #paper {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-image: url('../img/disegno 6.png');
+    background-size: 100% 100%;
+    padding: 5% 10% 0 5%;
+    font-family: neocyr;
+    font-size: 23px;  
+    h3 {
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+    #price {
+      h3 {
+        margin-top: 20px;
+      }
+      table {
+        margin-top: 25px;
+        &, td, th {
+          padding: 10px;
+        }
+        th {
+          text-align: center;
+          padding-bottom: 15px;
+        }
+      }
+    }
+  }
+  #pen {
+    position: absolute;
+    top: 0;
+    right: 200px;
+    max-height: 90%;
+    transform: rotate(20deg);
+    transform: rotateX(60deg);
+    transition: all 1s ease-in-out;
+    &.animated {
+      top: 20px;
+      right: 10px;
+      transform: rotate(0deg);
+      transform: rotateX(0deg);
+    }
+  }
+}
+#contacts-section {
+  .contacts {
+    height: 80%;
+    padding-top: 20px;
+    img {
+      max-width: 100%; 
+    }
+  }
+  img {
+    max-height: 100%;
+  }
+  .phones {
+    #phone-list {
+      width: 100%;
+      max-width: 400px;
+      transform: translateY(-500%);
+      transition: transform 1s ease-in-out;
+      opacity: 0;
+      &.visited {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  }
+  .social {
+    img {
+      width: 100%;
+      max-width: 200px;
+    }
+  }
+  #instagram {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 40% 0 0 100%;
+    transform: translateX(-500%);
+    transition: transform 1s ease-in-out;
+    &.visited {
+      transform: translateX(0);
+    }
+  }
+  #facebook {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: -70% 0 0 0;
+    transform: translateX(-500%);
+    transition: transform 1s ease-in-out 0.2s;
+    max-height: 300px;
+    &.visited {
+      transform: translateX(0);
+      transform: rotate(-20deg);
+    }
+  }
+  #letter {
+    transform: translateZ(500px);
+  }
+}
+footer {
+  img {
+    width: 100%;
+    max-height: 100%;
+  }
+}

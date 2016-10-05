@@ -1,0 +1,28 @@
+{
+  "name": "Olena Verbets App",
+  "authors": [
+    "Denys Gudakov <denysgud@gmail.com>"
+  ],
+  "description": "",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.0",
+    "bootstrap": "^3.3.7",
+    "angular": "^1.5.8",
+    "bootstrap-social": "^5.0.0",
+    "font-awesome": "^4.6.3",
+    "reset-css": "^2.0.2011012603",
+    "jquery-mousewheel": "^3.1.13",
+    "lodash": "^4.15.0",
+    "angular-animate": "^1.5.8"
+  }
+}

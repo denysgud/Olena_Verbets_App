@@ -1,16 +1,24 @@
 {
   "name": "OlenaVerbetsSite",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
-  "main": "app.js",
+  "main": "server/server.js",
+  "engines": {
+    "node": "~4.4.4"
+  },
   "scripts": {
+    "postinstall": "bower install",
+    "prestart": "npm install",
+    "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bower": "^1.7.9"
+    "bower": "^1.7.9",
+    "express": "^4.14.0",
+    "morgan": "^1.7.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",

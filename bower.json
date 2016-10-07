@@ -4,7 +4,7 @@
     "Denys Gudakov <denysgud@gmail.com>"
   ],
   "description": "",
-  "main": "index.html",
+  "main": "app.js",
   "license": "MIT",
   "homepage": "",
   "ignore": [

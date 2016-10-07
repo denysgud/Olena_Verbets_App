@@ -43,7 +43,7 @@ footer {
   height: 2%;
 }
 body {
-  background-image: url('https://dl.dropboxusercontent.com/content_link/8KxjT37WZkdveheByK6T9GYhH0BZ5dPQKkqDZAF7iuSEeLJ6Zh51IInjfXkwBkUM/file');
+  background-image: url('http://res.cloudinary.com/dlsudxrfv/image/upload/v1475864895/Background_cuge66.gif');
   background-size: 100%;
   background-repeat: repeat-y;
   text-align: center;
@@ -173,7 +173,7 @@ header #photos div:nth-child(3) img {
 #about-section #about-paper {
   height: 80%;
   width: 100%;
-  background-image: url('../img/disegno 6.png');
+  background-image: url('http://res.cloudinary.com/dlsudxrfv/image/upload/v1475864914/Disegno_6_qijfdn.png');
   background-size: 100% 100%;
   padding: 5% 10% 5% 5%;
   font-family: neocyr;
@@ -233,7 +233,7 @@ header #photos div:nth-child(3) img {
   width: 100%;
   height: 80%;
   margin-top: 20px;
-  background: url(../img/book.png) left top / 100% 100% no-repeat;
+  background: url('http://res.cloudinary.com/dlsudxrfv/image/upload/v1475865942/book_z3m76v.png') left top / 100% 100% no-repeat;
   perspective: 3000px;
   font-family: neocyr;
 }
@@ -277,14 +277,14 @@ header #photos div:nth-child(3) img {
 }
 #portfolio-section #book .left-page {
   top: 0;
-  background: url(../img/book-700.png) left top / 100% 100% no-repeat;
+  background: url('http://res.cloudinary.com/dlsudxrfv/image/upload/v1475865945/book-700_xeicm3.png') left top / 100% 100% no-repeat;
   left: 0;
   transform: rotateY(0deg);
   transform-origin: 100% 0;
 }
 #portfolio-section #book .right-page {
   top: 0;
-  background: url(../img/book-right-700.png) left top / 100% 100% no-repeat;
+  background: url('http://res.cloudinary.com/dlsudxrfv/image/upload/v1475865948/book-right-700_acg9lu.png') left top / 100% 100% no-repeat;
   left: 48.1%;
   transform: rotateY(0deg);
   transform-origin: 0 0;
@@ -321,7 +321,7 @@ header #photos div:nth-child(3) img {
   height: 100%;
   width: 100%;
   overflow: hidden;
-  background-image: url('../img/disegno 6.png');
+  background-image: url('http://res.cloudinary.com/dlsudxrfv/image/upload/v1475864914/Disegno_6_qijfdn.png');
   background-size: 100% 100%;
   padding: 5% 10% 0 5%;
   font-family: neocyr;

@@ -6,6 +6,10 @@
   "engines": {
     "node": "~4.4.4"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/denysgud/Olena_Verbets_App.git"
+  },
   "scripts": {
     "postinstall": "bower install",
     "prestart": "npm install",

@@ -40,7 +40,12 @@
 <body ng-controller="ScrollController">
   <div class="container" id="main-container">
     <header>
-      <div class="row" id="top-section">
+      <div class="visible-xs-block" id="mobile-top-section">
+        <span id="burger-menu"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></span>
+        <img src="http://res.cloudinary.com/dlsudxrfv/image/upload/v1475950194/header_pmatu4.png" alt="header">
+        <span class="arrow-down visible-xs-block"><i class="fa fa-chevron-down fa-2x" aria-hidden="true"></i></span>
+      </div>
+      <div class="row hidden-xs" id="top-section">
         <img id="head-image" src="http://res.cloudinary.com/dlsudxrfv/image/upload/v1475865927/header2_tetwhf.png" alt="header">
         <nav id="top-menu">
           <a href="" ng-click="scroll(null, 2)">Про дизайнера</a>
@@ -49,7 +54,7 @@
           <a href="" ng-click="scroll(null, 5)">Контакти</a>
         </nav>
       </div>
-      <div id="photos">
+      <div id="photos" class="row hidden-xs">
         <div class="col-xs-4">
           <img id="first-img" class="top-imgs" src="https://scontent-frt3-1.xx.fbcdn.net/v/t1.0-9/14238108_669793113194529_2675166720484663272_n.jpg?oh=04ccba5a655f8b7eb3b0b6acd59c8b21&oe=58A02A9A" alt="photo">
         </div>

@@ -1,4 +1,4 @@
-app.controller('ScrollController', ['$scope', '$window', '$interval', function($scope, $window, $interval) {
+app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout', function($scope, $window, $interval, $timeout) {
   
   var position = {
     1: 0,
@@ -16,6 +16,7 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', function($
   $scope.scrollMenuIsVisible = false;
   var photoAnimationIsActive = true;
   var activePosition = Math.floor(wind.scrollTop() / windHeight) + 1;
+  var mobScrlDir;
 
   console.log(position);
 
@@ -86,7 +87,10 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', function($
         }
       });
     }
-    $scope.$digest();
+    // $timeout uses instead $apply
+    $timeout(function() {
+      activePosition;
+    });
   };
 
   wind.on('mousewheel', function (e) {
@@ -130,17 +134,41 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', function($
     }
   });*/
 
-  $('#main-container').on({
-    'touchstart': function(e) { 
-      console.log('start'); // Replace this with your code.
-    }
+  wind.on({'touchstart': function(e) {
+    var swipe = e.originalEvent.touches,
+    start = swipe[0].pageY;
+
+    $(this).on('touchmove', function(e) {
+
+      var contact = e.originalEvent.touches,
+      end = contact[0].pageY,
+      distance = end - start;
+
+      if (distance < -30) {
+        console.log('up');
+        mobScrlDir = 'up';
+      }
+      if (distance > 30) {
+        console.log('down');
+        mobScrlDir = 'down';
+      }
+    })
+    .one('touchend', function() {
+      if (mobScrlDir === 'up') {
+        $scope.scroll(-1);
+      } else {
+        $scope.scroll(1);
+      }
+      $(this).off('touchmove touchend');
+    });
+  }
   });
 
-  $('#main-container').on({
+  /*wind.on({
     'touchend': function(e) { 
-      console.log('end'); // Replace this with your code.
+      console.log(e.deltaY); // Replace this with your code.
     }
-  });
+  });*/
   
   doc.keydown(function (e) {
     if (e.keyCode == 40) {
@@ -458,6 +486,30 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', function($
     };
     photosTopOffset = (wind.height() - bannerBlock.height() - parseInt(bannerBlock.css('margin-top')) - firstImg.height()) / 2;
     photosLeftOffset = $('#photos > div').width() - firstImg.width() + 20;
+    $('html, body').animate({
+      scrollTop: position[activePosition]
+    }, 15);
+  }
+  
+  /* **************** Start mobile-menu script ******************** */
+  var myMenu = $("#mobile-menu-container");
+
+  $scope.toggleMobMenu = function() {
+    myMenu.addClass("mobile-menu-animatable");
+    if(!myMenu.hasClass("mobile-menu-visible")) {		
+      myMenu.addClass("mobile-menu-visible");
+    } else {
+      myMenu.removeClass('mobile-menu-visible');		
+    }
+  };
+
+  function OnTransitionEnd() {
+    console.log('ended');
+    myMenu.classList.remove("mobile-menu-animatable");
   }
 
+  myMenu.on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', OnTransitionEnd, false);
+
 }]);
+
+

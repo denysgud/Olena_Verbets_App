@@ -139,7 +139,7 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
     start = swipe[0].pageY;
 
     $(this).on('touchmove', function(e) {
-
+      e.preventDefault();
       var contact = e.originalEvent.touches,
       end = contact[0].pageY,
       distance = end - start;

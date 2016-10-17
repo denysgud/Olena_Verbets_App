@@ -17,8 +17,8 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
   var photoAnimationIsActive = true;
   var activePosition = Math.floor(wind.scrollTop() / windHeight) + 1;
   var mobScrlDir;
+  var mobScrlDetected = false;
 
-  console.log(position);
 
 
   $scope.scroll = function(deltaY, scrollTo) {
@@ -29,7 +29,7 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
         activePosition -= 1;
         scrollImgAnim(activePosition);
         if (activePosition === 1) {
-          startPhotoAnimation();
+          //startPhotoAnimation();
         }
         $('html, body').animate({
           scrollTop: position[activePosition]
@@ -44,10 +44,9 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
         });
       } else if (deltaY < 0 && activePosition < 5) {
         if (activePosition === 1) {
-          stopPhotoAnimation();
+          //stopPhotoAnimation();
         }
         activePosition += 1;
-        console.log(position[activePosition]);
         scrollImgAnim(activePosition);
         $('html, body').animate({
           scrollTop: position[activePosition]
@@ -64,14 +63,14 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
         activeScrolling = false;
         // Photo animation block
         if (activePosition === 1 && !photoAnimationIsActive) {
-          startPhotoAnimation();
+          //startPhotoAnimation();
         }
       }
     } else {
       if (activePosition === 1 && scrollTo != 1) {
-        stopPhotoAnimation();
+        //stopPhotoAnimation();
       } else if (activePosition !== 1 && scrollTo == 1) {
-        startPhotoAnimation();
+        //startPhotoAnimation();
       }
       activePosition = scrollTo;
       scrollImgAnim(activePosition);
@@ -94,17 +93,13 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
   };
 
   wind.on('mousewheel', function (e) {
-    console.log('scrolled');
     e.preventDefault();
     if (!wheeling && activeScrolling) {
-      console.log('1');
       queue[0] = e.deltaY;
     }
     if (!wheeling) {
-      console.log('start wheeling!');
       clearTimeout(wheeling);
       wheeling = setTimeout(function() {
-        console.log('stop wheeling!');
         wheeling = undefined;
         if (!activeScrolling) {
           $scope.scroll(e.deltaY);
@@ -114,17 +109,13 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
         wheeldelta.y = 0;*/
       }, 250);
     }
-      console.log(!wheeling);
-      console.log(activeScrolling);
     
 
     /*wheeldelta.x += e.deltaFactor * e.deltaX;
-    wheeldelta.y += e.deltaFactor * e.deltaY;
-    console.log(wheeldelta);*/
+    wheeldelta.y += e.deltaFactor * e.deltaY;*/
   });
 
   /*wind.on('scroll', function(e) {
-    console.log(Math.floor(wind.scrollTop() / windHeight) + 1);
     if (wind.scrollTop() > windHeight && !$scope.scrollMenuIsVisible) {
       $scope.scrollMenuIsVisible = true;
       $scope.$digest();
@@ -135,29 +126,50 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
   });*/
 
   wind.on({'touchstart': function(e) {
-    var swipe = e.originalEvent.touches,
-    start = swipe[0].pageY;
+    var swipe = e.originalEvent.touches;
+    var startY = swipe[0].pageY;
+    var startX = swipe[0].pageX;
 
     $(this).on('touchmove', function(e) {
       e.preventDefault();
-      var contact = e.originalEvent.touches,
-      end = contact[0].pageY,
-      distance = end - start;
+      var contact = e.originalEvent.touches;
+      var endY = contact[0].pageY;
+      var endX = contact[0].pageX;
+      var distanceY = endY - startY;
+      var distanceX = endX - startX;
 
-      if (distance < -30) {
-        console.log('up');
+      if (distanceY < -30) {
         mobScrlDir = 'up';
+        mobScrlDetected = true;
       }
-      if (distance > 30) {
-        console.log('down');
+      if (distanceY > 30) {
         mobScrlDir = 'down';
+        mobScrlDetected = true;
+      }
+      if (distanceX > 30) {
+        mobScrlDir = 'left';
+        mobScrlDetected = true;
+      }
+      if (distanceX < -30) {
+        mobScrlDir = 'right';
+        mobScrlDetected = true;
       }
     })
     .one('touchend', function() {
-      if (mobScrlDir === 'up') {
-        $scope.scroll(-1);
-      } else {
-        $scope.scroll(1);
+      if (mobScrlDetected === true) {
+        if (mobScrlDir === 'up') {
+          $scope.scroll(-1);
+          mobScrlDetected = false;
+        } else if (mobScrlDir === 'down') {
+          $scope.scroll(1);
+          mobScrlDetected = false;
+        } else if (mobScrlDir === 'right') {
+          $scope.mobileContentSwitch(activePosition, 1, null);
+          mobScrlDetected = false;
+        } else {
+          $scope.mobileContentSwitch(activePosition, -1, null);
+          mobScrlDetected = false;
+        }
       }
       $(this).off('touchmove touchend');
     });
@@ -166,7 +178,6 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
 
   /*wind.on({
     'touchend': function(e) { 
-      console.log(e.deltaY); // Replace this with your code.
     }
   });*/
   
@@ -174,14 +185,12 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
     if (e.keyCode == 40) {
       e.preventDefault();
       if (activePosition < 5) {
-      console.log('pressed');
         $scope.scroll(-1);
       }
     }
     if (e.keyCode == 38) {
       e.preventDefault();
       if (activePosition > 1) {
-      console.log('pressed');
         $scope.scroll(1);
       }
     }
@@ -199,6 +208,10 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
     }
   });
 
+  /*wind.on("orientationchange", function(e) {
+    console.log(e.orientation);;
+  });*/
+
   /* **************** End Scroll script ******************** */
 
   
@@ -215,7 +228,6 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
   //animObj[1](1);
   
   function scrollImgAnim(activeImg) {
-    console.log(activeImg);
     scrollImages.removeClass('active');
     scrollImages.eq(activeImg - 1).addClass('active');
   }
@@ -265,7 +277,6 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
   var inactiveTurning = true;
 
   $scope.clickOnLeftArrow = function() {
-    console.log('left');
     if (inactiveTurning) {
       if (activePage > 1) {
         pages[activePage][0].addClass('turned-left-page');
@@ -290,7 +301,6 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
     item[0].on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',
       function() {
         if (/turned-left-page/.test(item[0].attr('class'))) {
-          console.log(4);
           pages[activePage][0].addClass('closed-page');
           /*pages[activePage - 1][1].css('display', 'block').promise().then(function() {
             pages[activePage - 1][1].removeClass('turned-right-page');
@@ -303,7 +313,6 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
           pages[activePage][0].removeClass('opened-page');
           activePage -= 1;
         } else if (/opened-page/.test(item[0].attr('class'))) {
-          console.log(5);
           pages[activePage - 1][0].addClass('closed-page');
           inactiveTurning = true;
         }
@@ -313,7 +322,6 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
     item[1].on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',
       function() {
         if (/turned-right-page/.test(item[1].attr('class'))) {
-          console.log(1);
           pages[activePage][1].addClass('closed-page');
           /*pages[activePage + 1][0].css('display', 'block').promise().then(function() {
             pages[activePage + 1][0].removeClass('turned-left-page');
@@ -326,7 +334,6 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
           pages[activePage][0].removeClass('opened-page');
           activePage += 1;
         } else if (/opened-page/.test(item[1].attr('class'))) {
-          console.log(7);
           pages[activePage + 1][1].addClass('closed-page');
           inactiveTurning = true;
         }
@@ -350,7 +357,7 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
   var photosTopOffset = (windHeight - bannerBlock.height() - parseInt(bannerBlock.css('margin-top')) - firstImg.height()) / 2;
   var photosLeftOffset = $('#photos > div').width() - firstImg.width() + 20;
 
-  var fiMaxOffset = firstImg.offset().left + firstImg.width();
+  /*var fiMaxOffset = firstImg.offset().left + firstImg.width();
   var siMaxOffset = secondImg.offset().left + secondImg.width();
   var tiMaxOffset = thirdImg.offset().left + thirdImg.width();
   var firOffset = wind.width() - firstImg.offset().left - 50;
@@ -366,8 +373,6 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
 
   var animationPromise;
 
-  console.log($('#photos > div').width() - firstImg.width() + 20);
-
 
   topImgs.css('top', photosTopOffset);
 
@@ -378,14 +383,12 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
     // store the interval promise
     animationPromise = $interval(photoAnimation, 2000);
     photoAnimationIsActive = true;
-    console.log('animation started');
   };
 
   var stopPhotoAnimation = function() {
     $scope.scrollMenuIsVisible = true;
     $interval.cancel(animationPromise);
     photoAnimationIsActive = false;
-    console.log('animation stopped');
   };
 
   // starting the interval by default
@@ -403,7 +406,6 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
   });
 
   function photoAnimation() {
-    console.log(photosLeftOffset);
     firstImg.css({
       left: photosLeftOffset * Math.random(),
       top: photosTopOffset * 2 * Math.random(),
@@ -419,7 +421,7 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
       top: photosTopOffset * 2 * Math.random(),
       transform: 'rotate(' + ((Math.random() - 0.5) * 11) + 'deg)'
     });
-  }
+  }*/
 
   /*function photoAnimation() {
     // *** First image animation *** 
@@ -493,6 +495,26 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
   
   /* **************** Start mobile-menu script ******************** */
   var myMenu = $("#mobile-menu-container");
+  var idReference = {
+    2: {
+      section: 'about',
+      menuItems: angular.element('#about-list li'),
+      contentItems: angular.element('#about-list-content li'),
+      activeContent: 0
+    },
+    3: {
+      section: 'portfolio',
+      menuItems: angular.element('#portfolio-list li'),
+      contentItems: angular.element('#portfolio-list-content li'),
+      activeContent: 0
+    },
+    4: {
+      section: 'htb',
+      menuItems: angular.element('#htb-list li'),
+      contentItems: angular.element('#htb-list-content li'),
+      activeContent: 0
+    }
+  };
 
   $scope.toggleMobMenu = function() {
     myMenu.addClass("mobile-menu-animatable");
@@ -504,11 +526,68 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
   };
 
   function OnTransitionEnd() {
-    console.log('ended');
-    myMenu.classList.remove("mobile-menu-animatable");
+    myMenu.removeClass("mobile-menu-animatable");
   }
 
-  myMenu.on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', OnTransitionEnd, false);
+  myMenu.on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', OnTransitionEnd);
+
+  $scope.mobileContentSwitch = function(currentSection, switchDirection, switchTo) {
+    var menuList = idReference[currentSection].menuItems;
+    var contentList = idReference[currentSection].contentItems;
+    var activeContent = idReference[currentSection].activeContent;
+    if (!switchTo && switchTo != 0) {
+      switchTo = activeContent + switchDirection;
+    }
+    idReference[currentSection].activeContent = switchTo;
+
+    if (switchTo < 0) {
+      contentList.removeClass('active');
+      contentList.eq(0).addClass('last-page-left');
+    } else if (switchTo > idReference[currentSection].menuItems.length - 1) {
+      contentList.removeClass('active');
+      contentList.eq(idReference[currentSection].menuItems.length - 1).addClass('last-page-right');
+    } else {
+        // Change classes in menu list
+        menuList.removeClass('active');
+        if (menuList.eq(activeContent).index() < switchTo) {
+          menuList.eq(activeContent).addClass('moved-left');
+        } else {
+          menuList.eq(activeContent).addClass('moved-right');
+        }
+
+        // Change classes in content list
+        contentList.removeClass('active');
+        if (contentList.eq(activeContent).index() < switchTo) {
+          contentList.eq(activeContent).addClass('moved-left');
+        } else {
+          contentList.eq(activeContent).addClass('moved-right');
+        }
+
+        // Add active class to appropriate container
+        menuList.eq(switchTo).removeClass();
+        menuList.eq(switchTo).addClass('active');
+        contentList.eq(switchTo).removeClass();
+        contentList.eq(switchTo).addClass('active');
+    }
+  };
+  
+  _.forEach(idReference, function(value, key) {
+    var itemLength = value.contentItems.length;
+    value.contentItems.eq(0).on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
+      if (value.contentItems.eq(0).hasClass('last-page-left')) {
+        value.contentItems.removeClass('last-page-left');
+        value.contentItems.eq(0).addClass('active');
+        idReference[key].activeContent = 0;
+      }
+    });
+    value.contentItems.eq(itemLength - 1).on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
+      if (value.contentItems.eq(itemLength - 1).hasClass('last-page-right')) {
+        value.contentItems.removeClass('last-page-right');
+        value.contentItems.eq(itemLength - 1).addClass('active');
+        idReference[key].activeContent = itemLength - 1;
+      }
+    })
+  });
 
 }]);
 

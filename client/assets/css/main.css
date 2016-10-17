@@ -10,10 +10,15 @@
 /* *** variables *** */
 /* *** default styles *** */
 h2 {
-  font-size: 35px;
+  font-size: 30px;
   font-family: peace-sans;
   text-shadow: 2px 0 5px #333;
   color: #000;
+}
+@media screen and (min-width: 400px) {
+  h2 {
+    font-size: 35px;
+  }
 }
 @media screen and (min-width: 768px) {
   h2 {
@@ -35,7 +40,15 @@ a {
   color: #000;
 }
 a:hover {
+  color: #000;
   text-decoration: none;
+}
+a:active {
+  color: #000;
+  text-decoration: none;
+}
+ul.navigation-list li {
+  list-style: none;
 }
 body,
 html {
@@ -68,7 +81,7 @@ footer {
   height: 2%;
 }
 body {
-  background-image: url('http://res.cloudinary.com/dlsudxrfv/image/upload/v1475864895/Background_cuge66.gif');
+  background-image: url('https://res.cloudinary.com/dlsudxrfv/image/upload/v1475864895/Background_cuge66.gif');
   background-size: 100%;
   background-repeat: repeat-y;
   text-align: center;
@@ -94,18 +107,88 @@ body {
   }
 }
 .section-header {
-  height: 15%;
+  height: 10%;
   padding-top: 20px;
 }
 @media screen and (min-width: 768px) {
   .section-header {
+    padding-top: 30px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .section-header {
+    padding-top: 40px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .section-header {
     padding-top: 50px;
   }
 }
-.arrow-down {
-  position: absolute;
-  bottom: 20px;
+.section-content {
+  height: 85%;
+}
+.mobile-section-wrapper {
+  height: 90%;
+}
+.mobile-section-wrapper .content-menu {
+  height: 10%;
+  display: flex;
+}
+.mobile-section-wrapper .content-menu ul {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+.mobile-section-wrapper .content-menu ul li {
+  padding: 0 5px;
+  margin: 0 5px;
+}
+.mobile-section-wrapper .content-menu ul li.active {
+  border-bottom: 3px solid #000;
+}
+.mobile-section-wrapper .mobile-section-content {
+  height: 80%;
+}
+.mobile-section-wrapper .mobile-section-content ul {
+  position: relative;
+  height: 100%;
   width: 100%;
+}
+.mobile-section-wrapper .mobile-section-content ul li {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  background-image: url('https://res.cloudinary.com/dlsudxrfv/image/upload/v1476362273/Disegno_21_ert2is.png');
+  background-size: 100% 100%;
+  transform: translateX(100%);
+  transition: transform 500ms ease-in;
+}
+.mobile-section-wrapper .mobile-section-content ul li.active {
+  transform: none;
+}
+.mobile-section-wrapper .mobile-section-content ul li.moved-right {
+  transform: translateX(200%);
+}
+.mobile-section-wrapper .mobile-section-content ul li.moved-left {
+  transform: translateX(-200%);
+}
+.mobile-section-wrapper .mobile-section-content ul li.last-page-right {
+  transform: translateX(-20%);
+  transition: transform 200ms ease-in;
+}
+.mobile-section-wrapper .mobile-section-content ul li.last-page-left {
+  transform: translateX(20%);
+  transition: transform 200ms ease-in;
+}
+.arrow-down {
+  display: flex;
+  width: 100%;
+  height: 10%;
+}
+.arrow-down i {
+  margin: auto;
 }
 .mobile-menu-visible#mobile-menu-container {
   pointer-events: auto;
@@ -127,7 +210,7 @@ body {
   transition: all 130ms ease-in;
 }
 #mobile-menu {
-  background: #fff url('http://res.cloudinary.com/dlsudxrfv/image/upload/v1476181355/Foto_10-10-16_23_17_44_ux0t3u.png') left top / 100% 100%;
+  background: #fff url('https://res.cloudinary.com/dlsudxrfv/image/upload/v1476210987/Disegno_20_sdjd8p.png') left top / 100% 100%;
   position: relative;
   max-width: 400px;
   height: 100%;
@@ -173,9 +256,17 @@ body {
 }
 #burger-menu {
   position: fixed;
-  top: 20px;
-  left: 15px;
+  top: 22px;
+  left: 10px;
   z-index: 140;
+  font-size: 1.5em;
+}
+@media screen and (min-width: 400px) {
+  #burger-menu {
+    top: 20px;
+    left: 15px;
+    font-size: 2em;
+  }
 }
 header {
   text-align: center;
@@ -184,7 +275,10 @@ header #mobile-top-section {
   position: relative;
   height: 100%;
 }
-header #mobile-top-section img {
+header #mobile-top-section #top-section-content {
+  height: 90%;
+}
+header #mobile-top-section #top-section-content img {
   width: 100%;
   margin-top: 47px;
 }
@@ -223,23 +317,19 @@ header #top-section img {
     font-family: 'peace-sans';
     color: #000;
     text-decoration: none;
-    text-shadow: 1px 1px 4px #000;
+    text-shadow: 1px 1px 2px #000;
   }
   header #top-section a:nth-child(1) {
     left: 1.5%;
-    color: #96A8C8;
   }
   header #top-section a:nth-child(2) {
     left: 24.7%;
-    color: #E497E8;
   }
   header #top-section a:nth-child(3) {
     left: 47.9%;
-    color: #F3F94F;
   }
   header #top-section a:nth-child(4) {
     left: 71.2%;
-    color: #F94F52;
   }
 }
 @media screen and (min-width: 992px) {
@@ -303,9 +393,9 @@ header #photos div:nth-child(3) img {
   opacity: 0;
 }
 #about-section #about-paper {
-  height: 80%;
+  height: 100%;
   width: 100%;
-  background-image: url('http://res.cloudinary.com/dlsudxrfv/image/upload/v1475864914/Disegno_6_qijfdn.png');
+  background-image: url('https://res.cloudinary.com/dlsudxrfv/image/upload/v1475864914/Disegno_6_qijfdn.png');
   background-size: 100% 100%;
   padding: 5% 10% 5% 5%;
   font-family: neocyr;
@@ -363,9 +453,8 @@ header #photos div:nth-child(3) img {
 #portfolio-section #book {
   position: relative;
   width: 100%;
-  height: 80%;
-  margin-top: 20px;
-  background: url('http://res.cloudinary.com/dlsudxrfv/image/upload/v1475865942/book_z3m76v.png') left top / 100% 100% no-repeat;
+  height: 95%;
+  background: url('https://res.cloudinary.com/dlsudxrfv/image/upload/v1475865942/book_z3m76v.png') left top / 100% 100% no-repeat;
   perspective: 3000px;
   font-family: neocyr;
 }
@@ -409,14 +498,14 @@ header #photos div:nth-child(3) img {
 }
 #portfolio-section #book .left-page {
   top: 0;
-  background: url('http://res.cloudinary.com/dlsudxrfv/image/upload/v1475865945/book-700_xeicm3.png') left top / 100% 100% no-repeat;
+  background: url('https://res.cloudinary.com/dlsudxrfv/image/upload/v1475865945/book-700_xeicm3.png') left top / 100% 100% no-repeat;
   left: 0;
   transform: rotateY(0deg);
   transform-origin: 100% 0;
 }
 #portfolio-section #book .right-page {
   top: 0;
-  background: url('http://res.cloudinary.com/dlsudxrfv/image/upload/v1475865948/book-right-700_acg9lu.png') left top / 100% 100% no-repeat;
+  background: url('https://res.cloudinary.com/dlsudxrfv/image/upload/v1475865948/book-right-700_acg9lu.png') left top / 100% 100% no-repeat;
   left: 48.1%;
   transform: rotateY(0deg);
   transform-origin: 0 0;
@@ -447,13 +536,13 @@ header #photos div:nth-child(3) img {
   right: 5%;
 }
 #how-to-buy-section #paper-with-pen {
-  height: 80%;
+  height: 100%;
 }
 #how-to-buy-section #paper {
   height: 100%;
   width: 100%;
   overflow: hidden;
-  background-image: url('http://res.cloudinary.com/dlsudxrfv/image/upload/v1475864914/Disegno_6_qijfdn.png');
+  background-image: url('https://res.cloudinary.com/dlsudxrfv/image/upload/v1475864914/Disegno_6_qijfdn.png');
   background-size: 100% 100%;
   padding: 5% 10% 0 5%;
   font-family: neocyr;
@@ -494,56 +583,117 @@ header #photos div:nth-child(3) img {
   transform: rotateX(0deg);
 }
 #contacts-section .contacts {
-  height: 80%;
-  padding-top: 20px;
+  height: 30%;
 }
-#contacts-section .contacts img {
+#contacts-section .contacts .phones {
+  height: 100%;
+  display: flex;
+}
+#contacts-section .contacts .phones #phone-list {
   max-width: 100%;
-}
-#contacts-section img {
   max-height: 100%;
-}
-#contacts-section .phones #phone-list {
-  width: 100%;
-  max-width: 400px;
+  margin: auto;
   transform: translateY(-500%);
   transition: transform 1s ease-in-out;
   opacity: 0;
 }
-#contacts-section .phones #phone-list.visited {
+#contacts-section .contacts .phones #phone-list.visited {
   transform: translateY(0);
   opacity: 1;
 }
-#contacts-section .social img {
-  width: 100%;
-  max-width: 200px;
+@media screen and (min-width: 768px) {
+  #contacts-section .contacts .phones {
+    height: 33%;
+  }
 }
-#contacts-section #instagram {
+#contacts-section .contacts .social {
+  height: 100%;
+}
+#contacts-section .contacts .social a {
+  height: 100%;
+  display: flex;
+}
+#contacts-section .contacts .social a img {
+  margin: auto;
+}
+@media screen and (min-width: 768px) {
+  #contacts-section .contacts .social {
+    height: 33%;
+  }
+}
+#contacts-section .contacts #instagram {
   position: relative;
   top: 0;
   left: 0;
-  margin: 40% 0 0 100%;
-  transform: translateX(-500%);
+  max-width: 100%;
+  max-height: 100%;
+  transform: translateX(-700%);
   transition: transform 1s ease-in-out;
 }
-#contacts-section #instagram.visited {
+#contacts-section .contacts #instagram.visited {
   transform: translateX(0);
 }
-#contacts-section #facebook {
+@media screen and (min-width: 768px) {
+  #contacts-section .contacts #instagram {
+    max-height: 150px;
+  }
+}
+#contacts-section .contacts #facebook {
   position: relative;
   top: 0;
   left: 0;
-  margin: -70% 0 0 0;
-  transform: translateX(-500%);
+  transform: translateX(500%);
   transition: transform 1s ease-in-out 0.2s;
-  max-height: 300px;
+  max-height: 70px;
 }
-#contacts-section #facebook.visited {
+#contacts-section .contacts #facebook.visited {
   transform: translateX(0);
   transform: rotate(-20deg);
 }
+@media screen and (min-width: 400px) {
+  #contacts-section .contacts #facebook {
+    max-height: 100px;
+  }
+}
+@media screen and (min-width: 500px) {
+  #contacts-section .contacts #facebook {
+    max-height: 120px;
+  }
+}
+@media screen and (min-width: 600px) {
+  #contacts-section .contacts #facebook {
+    max-height: 150px;
+  }
+}
+@media screen and (min-width: 700px) {
+  #contacts-section .contacts #facebook {
+    max-height: 100%;
+  }
+}
+@media screen and (min-width: 768px) {
+  #contacts-section .contacts #facebook {
+    max-height: 100%;
+    transform: translateX(-500%);
+  }
+}
+@media screen and (min-width: 768px) {
+  #contacts-section .contacts {
+    height: 100%;
+  }
+}
 #contacts-section #letter {
-  transform: translateZ(500px);
+  height: 70%;
+  display: flex;
+}
+#contacts-section #letter img {
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+@media screen and (min-width: 768px) {
+  #contacts-section #letter {
+    height: 100%;
+  }
 }
 footer img {
   width: 100%;

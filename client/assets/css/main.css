@@ -155,6 +155,7 @@ body {
   position: relative;
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 .mobile-section-wrapper .mobile-section-content ul li {
   position: absolute;
@@ -585,6 +586,7 @@ header #photos div:nth-child(3) img {
 }
 #contacts-section .contacts {
   height: 30%;
+  overflow: hidden;
 }
 #contacts-section .contacts .phones {
   height: 100%;

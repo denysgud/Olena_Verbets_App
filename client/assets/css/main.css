@@ -258,8 +258,8 @@ body {
 }
 #burger-menu {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 22px;
+  left: 10px;
   z-index: 140;
   font-size: 1.5em;
 }
@@ -584,9 +584,11 @@ header #photos div:nth-child(3) img {
   transform: rotate(0deg);
   transform: rotateX(0deg);
 }
+#contacts-section {
+  overflow: hidden;
+}
 #contacts-section .contacts {
   height: 30%;
-  overflow: hidden;
 }
 #contacts-section .contacts .phones {
   height: 100%;

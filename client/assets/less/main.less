@@ -54,6 +54,7 @@ ul {
 body,
 html {
   height: 100%;
+  width: 100%;
 }
 body {
   overflow: hidden;
@@ -212,29 +213,6 @@ body {
     }
 }
 
-#mobile-menu {
-  background: #fff url('https://res.cloudinary.com/dlsudxrfv/image/upload/v1476210987/Disegno_20_sdjd8p.png') left top/ 100% 100%;
-  position: relative;
-  max-width: 400px;
-  height: 100%;
-  width: 75%;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
-  transform: translateX(-103%);
-  z-index: 160;
-  display: flex;
-  flex-direction: column;
-  h3 {
-    font-size: 40px;
-    font-weight: bold;
-    margin: 40px 0;
-  }
-  .menu-item {
-    font-size: 25px;
-    width: 100%;
-    height: 50px;
-  }
-}
-
 #mobile-menu-container {
   position: fixed;
   top: 0;
@@ -259,10 +237,33 @@ body {
   }
 }
 
+#mobile-menu {
+  background: #fff url('https://res.cloudinary.com/dlsudxrfv/image/upload/v1476210987/Disegno_20_sdjd8p.png') left top/ 100% 100%;
+  position: relative;
+  max-width: 400px;
+  height: 100%;
+  width: 75%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  transform: translateX(-103%);
+  z-index: 160;
+  display: flex;
+  flex-direction: column;
+  h3 {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 40px 0;
+  }
+  .menu-item {
+    font-size: 25px;
+    width: 100%;
+    height: 50px;
+  }
+}
+
 #burger-menu {
   position: fixed;
-  top: 22px;
-  left: 10px;
+  top: 0;
+  left: 0;
   z-index: 140;
   font-size: 1.5em;
   @media screen {

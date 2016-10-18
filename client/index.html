@@ -38,6 +38,7 @@
   
 </head>
 <body ng-controller="ScrollController">
+  <span class="visible-xs-block" id="burger-menu" ng-click="toggleMobMenu()"><i class="fa fa-bars" aria-hidden="true"></i></span>
   <div id="mobile-menu-container" class="visible-xs-block" ng-click="toggleMobMenu()">
     <div id="mobile-menu">
       <h3>Меню</h3>
@@ -59,7 +60,6 @@
     </div>
   </div>
   <div class="container" id="main-container">
-    <span class="visible-xs-block" id="burger-menu" ng-click="toggleMobMenu()"><i class="fa fa-bars" aria-hidden="true"></i></span>
     <header>
       <div class="visible-xs-block" id="mobile-top-section">
         <div id="top-section-content">

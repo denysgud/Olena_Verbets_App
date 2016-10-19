@@ -32,7 +32,7 @@ h2 {
 }
 @media screen and (min-width: 1200px) {
   h2 {
-    font-size: 70px;
+    font-size: 65px;
   }
 }
 a {
@@ -116,18 +116,9 @@ body {
     padding-top: 30px;
   }
 }
-@media screen and (min-width: 992px) {
-  .section-header {
-    padding-top: 40px;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .section-header {
-    padding-top: 50px;
-  }
-}
 .section-content {
-  height: 85%;
+  height: 90%;
+  padding-top: 20px;
 }
 .mobile-section-wrapper {
   height: 90%;
@@ -698,6 +689,11 @@ header #photos div:nth-child(3) img {
 @media screen and (min-width: 768px) {
   #contacts-section #letter {
     height: 100%;
+  }
+}
+@media screen and (min-width: 768px) {
+  #contacts-section {
+    overflow: visible;
   }
 }
 footer img {

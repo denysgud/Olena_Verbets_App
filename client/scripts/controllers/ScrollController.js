@@ -30,6 +30,7 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
         scrollImgAnim(activePosition);
         if (activePosition === 1) {
           //startPhotoAnimation();
+          $scope.scrollMenuIsVisible = false; // this code needed only without startPhotoAnimation!!!
         }
         $('html, body').animate({
           scrollTop: position[activePosition]
@@ -45,6 +46,7 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
       } else if (deltaY < 0 && activePosition < 5) {
         if (activePosition === 1) {
           //stopPhotoAnimation();
+          $scope.scrollMenuIsVisible = true; // this code needed only without stopPhotoAnimation!!!
         }
         activePosition += 1;
         scrollImgAnim(activePosition);
@@ -64,6 +66,7 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
         // Photo animation block
         if (activePosition === 1 && !photoAnimationIsActive) {
           //startPhotoAnimation();
+          $scope.scrollMenuIsVisible = false; // this code needed only without startPhotoAnimation!!!
         }
       }
     } else {
@@ -71,6 +74,7 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
         //stopPhotoAnimation();
       } else if (activePosition !== 1 && scrollTo == 1) {
         //startPhotoAnimation();
+        $scope.scrollMenuIsVisible = false; // this code needed only without startPhotoAnimation!!!
       }
       activePosition = scrollTo;
       scrollImgAnim(activePosition);
@@ -559,8 +563,20 @@ app.controller('ScrollController', ['$scope', '$window', '$interval', '$timeout'
         contentList.removeClass('active');
         if (contentList.eq(activeContent).index() < switchTo) {
           contentList.eq(activeContent).addClass('moved-left');
+          for (var i = 0; i < switchTo; i++) {
+            if (contentList.eq(i).hasClass('moved-right')) {
+              contentList.eq(i).removeClass('moved-right');
+              contentList.eq(i).addClass('moved-left');
+            }
+          }
         } else {
           contentList.eq(activeContent).addClass('moved-right');
+          for (var i = contentList.length - 1; i > switchTo; i--) {
+            if (contentList.eq(i).hasClass('moved-left')) {
+              contentList.eq(i).removeClass('moved-left');
+              contentList.eq(i).addClass('moved-right');
+            }
+          }
         }
 
         // Add active class to appropriate container
